@@ -8,10 +8,10 @@ Output
 
 ```
 @IF EXIST "%~dp0\node.exe" (
-  "%~dp0\node.exe" "c:\p\wrap-cmd\bin.js" %*
+  "%~dp0\node.exe" "PATH_TO_SCRIPT\bin.js" %*
 ) ELSE (
   @SETLOCAL
   @SET PATHEXT=%PATHEXT:;.JS;=;%
-  node "c:\p\wrap-cmd\bin.js" %*
+  node "PATH_TO_SCRIPT\bin.js" %*
 )
 ```
