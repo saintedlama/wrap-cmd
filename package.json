@@ -1,0 +1,11 @@
+{
+  "name": "wrap-cmd",
+  "version": "1.0.0",
+  "description": "Wrap a node.js script into a .cmd file to execute the script directly on windows",
+  "repository": "saintedlama/wrap-cmd",
+  "bin": {
+    "wrap-cmd": "./bin.js"
+  },
+  "author": "Christoph Walcher <christoph.walcher@gmail.com>",
+  "license": "ISC"
+}
