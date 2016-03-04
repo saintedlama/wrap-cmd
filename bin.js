@@ -14,7 +14,7 @@ var template =
 var scriptfile = process.argv[2];
 
 if (!scriptfile) {
-  console.log('Usage: wrap-cmd SCRIPTFILE');
+  printUsage();
   process.exit(1);
 }
 
@@ -23,6 +23,20 @@ if (!fs.existsSync(scriptfile)) {
   process.exit(1);
 }
 
-var scriptfilePath = path.resolve(scriptfile);
+var isRelative = process.argv.some(function(arg) { return arg == '-r'});
+
+var scriptfilePath = isRelative?path.join('%~dp0', scriptfile):path.resolve(scriptfile);
 
 console.log(template.replace(/SCRIPTFILE/gi, scriptfilePath));
+
+function printUsage() {
+  console.log('Usage: wrap-cmd [options] SCRIPTFILE');
+  console.log();
+  console.log('Options:');
+  console.log();
+  console.log('  -r  Use a relative script file location. Instead of an absolute path to SCRIPTFILE %~dp0 is used');
+  console.log();
+  console.log('Example:');
+  console.log();
+  console.log('  wrap-cmd line_count.js  outputs a cmd file to execute line_count.js from a windows cmd');
+}
